@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Memory Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="game-container">
+    <h1>Memory Game</h1>
+    <p id="moves">Moves: 0</p>
+    <button id="restart">Restart Game</button>
+    <div class="grid" id="game-grid"></div>
+  </div>
+
+  <!-- Congratulations overlay -->
+  <div id="congrats-overlay" class="congrats-overlay hidden">
+    <div class="congrats-message">
+      🎉 Congratulations! A match! 🎉
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

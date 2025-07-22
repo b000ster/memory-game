@@ -1,0 +1,145 @@
+body {
+  background: linear-gradient(120deg, #89f7fe, #66a6ff 100%);
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-container {
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 8px 32px rgba(100,150,200,0.15);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  max-width: 420px;
+  width: 95vw;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  letter-spacing: 2px;
+  color: #3a5998;
+}
+
+#moves {
+  margin: 0.5rem 0 1rem 0;
+  font-weight: 500;
+  color: #395667;
+}
+
+#restart {
+  margin-bottom: 1rem;
+  background: #3989c9;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#restart:hover { background: #276ca5; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(60px, 1fr));
+  gap: 1rem;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.card {
+  background: linear-gradient(135deg,#e3eeff,#7fafdb);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(80,150,180,0.10);
+  width: 100%;
+  max-width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  color: #333;
+  cursor: pointer;
+  position: relative;
+  perspective: 1000px;
+  user-select: none;
+  transition: transform 0.2s;
+}
+
+.card.flipped,
+.card.matched {
+  background: #f7ffc3;
+  color: #3989c9;
+  cursor: default;
+  transform: scale(1.07);
+}
+
+.card .hide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@media (max-width: 700px) {
+  .game-container {
+    padding: 1rem;
+    max-width: 98vw;
+  }
+  .card {
+    max-width: 60px;
+    height: 65px;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    height: 60px;
+    font-size: 1.8rem;
+  }
+}
+
+/* Congratulation Overlay */
+
+.congrats-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(50, 200, 100, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 0 0 15px #2aff00;
+  animation: fadeinout 2s forwards;
+  pointer-events: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@keyframes fadeinout {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}

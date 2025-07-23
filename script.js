@@ -12,6 +12,15 @@ const movesDisplay = document.getElementById('moves');
 const restartBtn = document.getElementById('restart');
 const congratsOverlay = document.getElementById('congrats-overlay');
 
+// For game completed animation
+const gameoverOverlay = document.getElementById('gameover-overlay');
+const nextBtn = document.getElementById('next-btn');
+const stars = [
+  document.getElementById('star1'),
+  document.getElementById('star2'),
+  document.getElementById('star3')
+];
+
 function shuffle(array) {
   for (let i = array.length-1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i+1));
@@ -29,6 +38,11 @@ function createBoard() {
   firstCard = null; 
   secondCard = null; 
   isLocked = false;
+  // Hide overlays if any
+  congratsOverlay.classList.add('hidden');
+  gameoverOverlay.classList.add('hidden');
+  // Reset star animations
+  stars.forEach(star => star.classList.remove('animate'));
 
   cardValues.forEach((value, idx) => {
     const card = document.createElement('div');
@@ -78,9 +92,7 @@ function handleCardClick(e) {
 
     resetTurn();
     if (matchedPairs === cardsArray.length) {
-      setTimeout(() => {
-        alert(`🎉 Congratulations! You won in ${moves} moves!`);
-      }, 700);
+      setTimeout(showGameoverAnimation, 800);
     }
   } else {
     setTimeout(() => {
@@ -101,3 +113,19 @@ function resetTurn() {
 restartBtn.addEventListener('click', createBoard);
 
 window.onload = createBoard;
+
+// Game completed animation with stars
+function showGameoverAnimation() {
+  // Hide and reset all stars
+  stars.forEach(star => star.classList.remove('animate'));
+  gameoverOverlay.classList.remove('hidden');
+  // Animate stars one after another
+  setTimeout(() => stars[0].classList.add('animate'), 250);
+  setTimeout(() => stars[1].classList.add('animate'), 650);
+  setTimeout(() => stars[2].classList.add('animate'), 1000);
+}
+
+nextBtn.onclick = function() {
+  gameoverOverlay.classList.add('hidden');
+  createBoard();
+};

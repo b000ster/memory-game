@@ -104,7 +104,7 @@ h1 {
   }
 }
 
-/* Congratulation Overlay */
+/* Congratulation Overlay For Pair Match */
 
 .congrats-overlay {
   position: fixed;
@@ -142,4 +142,97 @@ h1 {
     opacity: 0;
     transform: scale(0.8);
   }
+}
+
+/* Game Over Overlay (Game Completed with Stars) */
+
+.gameover-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #4b1177 60%, #231943 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10001;
+  animation: fadein-bg 0.7s ease;
+}
+@keyframes fadein-bg {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.gameover-board {
+  background: #76aef7;
+  border-radius: 32px;
+  box-shadow: 0 10px 40px #23294333;
+  width: 320px;
+  padding: 2.5rem 1.2rem 2.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.stars {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+  margin-top: -40px;
+  min-height: 60px;
+}
+.star {
+  font-size: 2.8rem;
+  color: #ffc94d;
+  filter: drop-shadow(0 0 11px #fff3);
+  opacity: 0;
+  transform: scale(0.2);
+  transition: opacity 0.22s, transform 0.28s;
+}
+.star.animate {
+  opacity: 1;
+  transform: scale(1.11) rotate(-8deg);
+  animation: popstar .36s cubic-bezier(.4,1.8,.7,.9);
+}
+@keyframes popstar {
+  0%   { opacity: 0; transform: scale(0.2) rotate(0deg);}
+  60%  { opacity: 1; transform: scale(1.25) rotate(10deg);}
+  100% { transform: scale(1.07) rotate(-8deg);}
+}
+.gameover-text {
+  color: #fffbe5;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.09em;
+  font-weight: bold;
+  margin-bottom: 1.1rem;
+  margin-top: 0.5rem;
+  text-shadow: 0 0 18px #fff;
+  text-align: center;
+}
+.next-btn {
+  background: #57b0f0;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 0.65rem 2.5rem;
+  font-size: 1.14rem;
+  letter-spacing: 0.08em;
+  margin-top: 0.8rem;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 2px 6px #1590e240;
+  transition: background 0.16s;
+}
+.next-btn:hover {
+  background: #2a98cf;
+}
+
+/* Responsive */
+@media (max-width: 450px) {
+  .gameover-board {
+    width: 94vw;
+    font-size: 1rem;
+    padding: 1.5rem 4vw 1.5rem 4vw;
+  }
+  .star { font-size: 2rem; }
 }

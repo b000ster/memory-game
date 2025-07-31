@@ -82,5 +82,10 @@ I created this memory game as part of my portfolio to demonstrate:
 
 ---
 
+📝 License
+MIT License — open source and free to use!
+
+---
+
 > *Thanks for visiting and playing! If you have suggestions or want to collaborate, feel free to reach out.*
 
